@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id" content="636804702409-98ui6ejo6737fl6344j6nlaed38rig3h.apps.googleusercontent.com">
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>{%  block title %}  {% endblock %}</title>
+    <style>
+        {%  block css %}  {% endblock%}
+    </style>
+      <style>
+        .data{
+        display:none;
+        }
+    </style>
+  </head>
+  <body>
+      {% load static %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/shop">Shop-Here</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/shop">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/shop/about">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/shop/tracker">Tracker</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/blog">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/shop/contact">Contact Us</a>
+      </li>
+    </ul>
+   <div class="ml-auto form-inline">
+
+<!--     {% if user.is_authenticated %}-->
+<!--        <ul class="navbar-nav ">-->
+<!--            <li class="nav-item dropdown">-->
+<!--        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          Welcome {{request.user}}-->
+<!--        </a>-->
+<!--        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--          <a class="dropdown-item" href="/shop/logout">Logout</a>-->
+
+<!--        </div>-->
+<!--      </li>-->
+<!--            </ul>-->
+
+<!--      {% else %}-->
+    <!-- Button trigger to login modal -->
+<!--<button type="button" class="btn btn-primary mx-2" data-toggle="modal" data-target="#loginModal">-->
+<!--  log in-->
+<!--</button>-->
+
+<!--&lt;!&ndash; login Modal &ndash;&gt;-->
+<!--<div class="modal fade " id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="loginpModalTitle">Login Here</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--                  <form action='/shop/login' method="post">-->
+<!--            <div class="form-group">-->
+<!--              <label for="loginusername">Username </label>-->
+<!--              <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="Enter your Username  ">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label for="loginpassword"> Password </label>-->
+<!--              <input type="password" class="form-control" id="loginpassword" name="loginpassword" placeholder="*******">-->
+<!--            </div>-->
+<!--                      {% csrf_token %}-->
+<!--                 <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--          </form>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--    &lt;!&ndash; Button trigger to signup modal &ndash;&gt;-->
+<!--<button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#signupModal">-->
+<!--  Sign Up-->
+<!--</button>-->
+
+<!--&lt;!&ndash; signup Modal &ndash;&gt;-->
+<!--<div class="modal fade " id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="signupModalTitle">Sign Up Form</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--                  <form action='/shop/signup' method="post">-->
+<!--            <div class="form-group">-->
+<!--              <label for="username">Username</label>-->
+<!--              <input type="text" class="form-control" id="username" name="username" placeholder="Enter a unique Username  ">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label for="fname">First name</label>-->
+<!--              <input type="text" class="form-control" id="fname" name="fname" placeholder="Type your First name">-->
+<!--            </div>-->
+<!--             <div class="form-group">-->
+<!--              <label for="lname">Last name</label>-->
+<!--              <input type="text" class="form-control" id="lname" name="lname" placeholder="Type your Last name">-->
+<!--            </div>-->
+<!--             <div class="form-group">-->
+<!--              <label for="email">Email address</label>-->
+<!--              <input type="email" class="form-control" id="email" name="email" placeholder="Type your email">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label for="pass1"> Choose Password</label>-->
+<!--              <input type="password" class="form-control" id="pass1" name="pass1" placeholder="*******">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label for="pass2"> Confirm Password</label>-->
+<!--              <input type="password" class="form-control" id="pass2" name="pass2" placeholder="*******">-->
+<!--            </div>-->
+<!--                      {% csrf_token %}-->
+<!--           <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--          </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--{% endif %}-->
+
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+       <div class="data">
+       <ul class="navbar-nav ">-->
+            <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle  " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p id="name" class="alert alert-danger "></p>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#" onclick="signOut();">Sign out</a>
+
+        </div>
+      </li>
+            </ul>
+           </div>
+
+ <form method='get' action='/shop/search/' class="form-inline my-2 mx-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+<button type="button" class="btn btn-secondary mx-2" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus.">
+  Cart(<span id="cart">0</span>)
+</button>
+
+</div>
+
+  </div>
+</nav>
+
+      {%  block body %}  {% endblock%}
+
+      <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+<!--    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  {% block js %} {% endblock %}
+  <script>
+      function onSignIn(googleUser) {
+          var profile = googleUser.getBasicProfile();
+          $(".g-signin2").css("display": "none");
+          $(".data").css("display": "block");
+          $("#name").text(profile.getName());
+          $("#pic").attr('src',profile.getImageUrl());
+}
+
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.alert('User signed out.');
+      $(".g-signin2").css("display": "block");
+       $(".data").css("display": "none");
+    });
+  }
+
+
+  </script>
+  </body>
+</html>
